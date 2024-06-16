@@ -1,26 +1,19 @@
-import shutil
 from pytube import YouTube
 
-def download_and_move_youtube_video(url, output_path, move_to_path):
+
+def download_youtube_video(url, output_path='C:\\Users\\erik\\Downloads'):
     try:
-        #Unduh
-        print("...")
+        print("Membuat objek YouTube...")
         yt = YouTube(url)
-        print("Mendapatkan video...")
+        print("Mendapatkan stream video dengan resolusi tertinggi...")
         stream = yt.streams.get_highest_resolution()
         print(f"Mengunduh video ke lokasi: {output_path}")
-        video_file = stream.download(output_path=output_path)
-        print(f"Video '{yt.title}' telah berhasil diunduh ke {output_path}")
-
-        #Pemindahan lokasi file
-        print(f"Memindahkan video ke: {move_to_path}")
-        shutil.move(video_file, move_to_path)
-        print(f"Video '{yt.title}' berhasil dipindahkan ke {move_to_path}")
+        stream.download(output_path=output_path)
+        print(f"Video '{yt.title}' telah berhasil diunduh.")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Terjadi kesalahan: {e}")
 
 if __name__ == "__main__":
     url = input("Masukkan URL video YouTube: ").strip()
-    output_path = '.'  #Lokasi path sementara untuk unduhan
-    move_to_path = 'C:\\Users\\erik\\Downloads'  #Path akhir
-    download_and_move_youtube_video(url, output_path, move_to_path)
+    output_path = 'C:\\Users\\erik\\Downloads'
+    download_youtube_video(url, output_path)
