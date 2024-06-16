@@ -1,7 +1,7 @@
 from pytube import YouTube
 
 
-def download_youtube_video(url, output_path='C:\\Users\\erik\\Downloads'):
+def download_youtube_video(url, output_path='...'): #path tujuan penyimpanan
     try:
         print("Membuat objek YouTube...")
         yt = YouTube(url)
@@ -15,5 +15,5 @@ def download_youtube_video(url, output_path='C:\\Users\\erik\\Downloads'):
 
 if __name__ == "__main__":
     url = input("Masukkan URL video YouTube: ").strip()
-    output_path = 'C:\\Users\\erik\\Downloads'
+    output_path = '...'#path tujuan penyimpanan
     download_youtube_video(url, output_path)
